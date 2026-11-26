@@ -30,6 +30,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+
 
 // Couleurs de l'application
 private val Bleu = Color(0xFF1D4ED8)
@@ -233,12 +236,15 @@ fun CompetencesSection(
         ) {
             TitreSection(titre = "Compétences")
 
-            competences.forEach { competence ->
-                Text(
-                    text = "• $competence",
-                    modifier = Modifier.padding(vertical = 3.dp),
-                    color = Color.DarkGray
-                )
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(competences) { competence ->
+                    CompetenceCard(
+                        competence = competence
+                    )
+                }
             }
         }
     }
@@ -343,6 +349,30 @@ fun ProfilAndroidPreview() {
             ),
             email = "alex@gmail.com",
             onContactClick = {}
+        )
+    }
+}
+
+
+@Composable
+fun CompetenceCard(
+    competence: String,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier,
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Bleu
+        )
+    ) {
+        Text(
+            text = competence,
+            modifier = Modifier.padding(
+                horizontal = 16.dp,
+                vertical = 10.dp
+            ),
+            color = Color.White
         )
     }
 }
