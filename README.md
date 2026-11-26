@@ -42,11 +42,21 @@ Le bleu est utilisé comme couleur principale. Les couleurs sont adaptées aux t
 
 La typographie permet de différencier les titres et les descriptions. Les coins arrondis donnent un aspect homogène aux différentes sections de l'application.
 
-## 6. Capture d'écran
+## 6. Captures d'écran
 
-Aperçu de l'application en thème clair et en thème sombre.
+### Avant modification de la hauteur des previews
 
-![Profil Développeur - Thèmes clair et sombre](captures/capture.png)
+Cette première capture montre l'application avant modification du paramètre `heightDp`.
+L'affichage ne permettait pas de voir l'ensemble du profil dans la preview.
+
+![Avant modification](captures/capture.png)
+
+### Après modification de la hauteur des previews
+
+Cette deuxième capture montre l'application après modification du paramètre `heightDp = 1200` dans les deux annotations `@Preview`.  
+Elle a permis d'afficher une plus grande partie du profil dans les previews, y compris les sections situées plus bas dans l'écran.
+
+![Après modification](captures/capture2.png)
 
 ## 7. Notions du chapitre Compose UI réutilisées
 

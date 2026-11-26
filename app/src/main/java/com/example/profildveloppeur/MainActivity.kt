@@ -358,7 +358,8 @@ fun TitreSection(
 
 @Preview(
     showBackground = true,
-    name = "Profil - Theme clair"
+    name = "Profil - Theme clair",
+    heightDp = 1200
 )
 @Composable
 fun ProfilLightPreview() {
@@ -383,7 +384,8 @@ fun ProfilLightPreview() {
 
 @Preview(
     showBackground = true,
-    name = "Profil - Theme sombre"
+    name = "Profil - Theme sombre",
+    heightDp = 1200
 )
 @Composable
 fun ProfilDarkPreview() {
