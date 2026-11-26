@@ -1,4 +1,3 @@
-
 package com.example.profildveloppeur
 
 import android.content.Intent
@@ -14,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,18 +31,12 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyColumn
 
-
-// Couleurs de l'application
-private val Bleu = Color(0xFF1D4ED8)
-private val Fond = Color(0xFFF1F5F9)
-
 data class ProjetUi(
     val id: Int,
     val titre: String,
     val technologies: String,
     val description: String
 )
-
 fun sampleProjets(): List<ProjetUi> {
     return listOf(
         ProjetUi(
@@ -148,7 +139,7 @@ fun ProfilScreen(
 ) {
     Surface(
         modifier = modifier.fillMaxSize(),
-        color = Fond
+        color = MaterialTheme.colorScheme.background
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
@@ -210,7 +201,7 @@ fun ProfilHeader(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        color = Bleu
+        color = MaterialTheme.colorScheme.primary
     ) {
         Column(
             modifier = Modifier.padding(20.dp),
@@ -238,13 +229,13 @@ fun ProfilHeader(
                 text = nom,
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onPrimary
             )
 
             Text(
                 text = role,
                 fontSize = 17.sp,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
     }
@@ -259,7 +250,7 @@ fun DescriptionSection(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        color = Color.White
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier.padding(20.dp)
@@ -269,12 +260,11 @@ fun DescriptionSection(
             Text(
                 text = description,
                 fontSize = 15.sp,
-                color = Color.DarkGray
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }
 }
-
 // Compétences
 @Composable
 fun CompetencesSection(
@@ -284,7 +274,7 @@ fun CompetencesSection(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        color = Color.White
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier.padding(20.dp)
@@ -315,7 +305,7 @@ fun ContactSection(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        color = Color.White
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier.padding(20.dp),
@@ -335,10 +325,7 @@ fun ContactSection(
 
             Button(
                 onClick = onContactClick,
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Bleu
-                )
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically
@@ -370,7 +357,7 @@ fun TitreSection(
         modifier = modifier.padding(bottom = 10.dp),
         fontSize = 19.sp,
         fontWeight = FontWeight.Bold,
-        color = Bleu
+        color = MaterialTheme.colorScheme.primary
     )
 }
 
@@ -429,7 +416,7 @@ fun CompetenceCard(
         modifier = modifier,
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Bleu
+            containerColor = MaterialTheme.colorScheme.primary
         )
     ) {
         Text(
@@ -438,7 +425,7 @@ fun CompetenceCard(
                 horizontal = 16.dp,
                 vertical = 10.dp
             ),
-            color = Color.White
+            color = MaterialTheme.colorScheme.onPrimary
         )
     }
 }
@@ -451,7 +438,7 @@ fun ProjetCard(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = MaterialTheme.colorScheme.surface
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
@@ -464,7 +451,7 @@ fun ProjetCard(
                 text = projet.titre,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Bleu
+                color = MaterialTheme.colorScheme.primary
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -473,7 +460,7 @@ fun ProjetCard(
                 text = projet.technologies,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Medium,
-                color = Color.Gray
+                color = MaterialTheme.colorScheme.secondary
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -481,7 +468,7 @@ fun ProjetCard(
             Text(
                 text = projet.description,
                 fontSize = 14.sp,
-                color = Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }
