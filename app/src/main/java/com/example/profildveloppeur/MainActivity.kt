@@ -323,23 +323,37 @@ fun ContactSection(
         ) {
             TitreSection(titre = "Contact")
 
-            Text(
-                text = email,
-                color = Color.DarkGray
+            OutlinedTextField(
+                value = email,
+                onValueChange = {},
+                readOnly = true,
+                label = {
+                    Text(text = "Adresse e-mail")
+                },
+                modifier = Modifier.fillMaxWidth()
             )
 
             Button(
                 onClick = onContactClick,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .semantics {
-                        contentDescription = "Envoyer un email à Zakia Kadi"
-                    },
+                modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Bleu
                 )
             ) {
-                Text(text = "Me contacter")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(
+                            id = android.R.drawable.ic_dialog_email
+                        ),
+                        contentDescription = null
+                    )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    Text(text = "Me contacter")
+                }
             }
         }
     }
