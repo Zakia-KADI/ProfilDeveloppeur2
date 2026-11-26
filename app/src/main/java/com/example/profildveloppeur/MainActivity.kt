@@ -23,6 +23,13 @@ import androidx.compose.ui.unit.sp
 import com.example.profildveloppeur.ui.theme.ProfilDéveloppeurTheme
 import android.widget.Toast
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+
 
 // Couleurs de l'application
 private val Bleu = Color(0xFF1D4ED8)
@@ -76,6 +83,21 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+@Composable
+fun Avatar(
+    modifier: Modifier = Modifier
+) {
+    Image(
+        painter = painterResource(
+            id = android.R.drawable.ic_menu_myplaces
+        ),
+        contentDescription = "Avatar du développeur",
+        modifier = modifier
+            .background(Color.White, CircleShape)
+            .padding(12.dp)
+    )
 }
 
 // Écran principal du profil
@@ -133,8 +155,27 @@ fun ProfilHeader(
         color = Bleu
     ) {
         Column(
-            modifier = Modifier.padding(24.dp)
+            modifier = Modifier.padding(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Box(
+                modifier = Modifier.size(80.dp)
+            ) {
+                Avatar(
+                    modifier = Modifier.fillMaxSize()
+                )
+
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .size(20.dp)
+                        .background(Color.Green, CircleShape)
+                        .border(3.dp, Color.White, CircleShape)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             Text(
                 text = nom,
                 fontSize = 28.sp,
