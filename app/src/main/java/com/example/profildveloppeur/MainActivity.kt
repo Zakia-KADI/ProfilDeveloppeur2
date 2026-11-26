@@ -13,10 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.profildveloppeur.ui.theme.ProfilDéveloppeurTheme
 import android.widget.Toast
 
@@ -227,14 +225,13 @@ fun ProfilHeader(
 
             Text(
                 text = nom,
-                fontSize = 28.sp,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onPrimary
             )
 
             Text(
                 text = role,
-                fontSize = 17.sp,
+                style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onPrimary
             )
         }
@@ -259,7 +256,7 @@ fun DescriptionSection(
 
             Text(
                 text = description,
-                fontSize = 15.sp,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface
             )
         }
@@ -355,8 +352,7 @@ fun TitreSection(
     Text(
         text = titre,
         modifier = modifier.padding(bottom = 10.dp),
-        fontSize = 19.sp,
-        fontWeight = FontWeight.Bold,
+        style = MaterialTheme.typography.titleLarge,
         color = MaterialTheme.colorScheme.primary
     )
 }
@@ -425,6 +421,7 @@ fun CompetenceCard(
                 horizontal = 16.dp,
                 vertical = 10.dp
             ),
+            style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.onPrimary
         )
     }
@@ -449,8 +446,7 @@ fun ProjetCard(
         ) {
             Text(
                 text = projet.titre,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.primary
             )
 
@@ -458,8 +454,7 @@ fun ProjetCard(
 
             Text(
                 text = projet.technologies,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.secondary
             )
 
@@ -467,7 +462,7 @@ fun ProjetCard(
 
             Text(
                 text = projet.description,
-                fontSize = 14.sp,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface
             )
         }
