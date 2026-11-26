@@ -1,72 +1,95 @@
-# Profil développeur
+# Profil Développeur 2
 
-## Description du projet
+## 1. Description de l'application
 
-Cette application Android a été réalisée avec Kotlin et Jetpack Compose.
-Elle permet d'afficher mon profil de développeuse avec mon nom, mon rôle, une présentation personnelle, mes compétences techniques et mon adresse email.
-Un bouton "Me contacter" permet d'ouvrir une application de messagerie pour envoyer un email.
+Profil Développeur 2 est une application Android développée en Kotlin avec Jetpack Compose.
 
-## Notions utilisées
+Elle constitue une amélioration de la première version de mon application Profil Développeur. Elle présente mon profil, mes compétences, mes projets, mes expériences et mes informations de contact à travers une interface moderne et adaptée aux thèmes clair et sombre.
 
-- Composables : création de l'interface à l'aide de fonctions annotées `@Composable`.
-- Paramètres : transmission des informations entre les composables.
-- Modifiers : personnalisation de la taille, des espacements et de l'apparence des éléments.
-- Padding externe et interne : gestion des espaces autour des sections et à l'intérieur des cartes.
-- Callbacks : utilisation de `onContactClick` pour gérer le clic sur le bouton.
-- Previews : création de deux aperçus avec `@Preview`.
-- Accessibilité de base : ajout d'une `contentDescription` au bouton de contact.
+Les données sont définies directement dans le code Kotlin.
 
-## Explication du code
+## 2. Composants Compose utilisés
 
-### 1. Quels composables avez-vous créés ?
+- `Text` : affichage des textes et des titres.
+- `Button` : bouton de contact.
+- `Icon` : icône du bouton de contact.
+- `Image` : affichage de l'avatar.
+- `Card` : présentation des compétences et des projets.
+- `OutlinedTextField` : affichage de l'adresse e-mail en lecture seule.
 
-J'ai créé six composables principaux :
+## 3. Layouts utilisés
 
-- `ProfilScreen` : organise l'ensemble de l'écran.
-- `ProfilHeader` : affiche le nom et le rôle.
-- `DescriptionSection` : affiche la présentation personnelle.
-- `CompetencesSection` : affiche les compétences.
-- `ContactSection` : affiche l'email et le bouton de contact.
-- `TitreSection` : affiche les titres des sections.
+- `Column` : organisation verticale des éléments.
+- `Row` : organisation horizontale des éléments.
+- `Box` : superposition de l'avatar et du badge.
+- `Spacer` : gestion des espacements.
+- `Surface` : organisation des sections de l'interface.
+- `LazyColumn` : liste verticale défilante.
+- `LazyRow` : liste horizontale défilante.
+- `Scaffold` : structure générale de l'application.
 
-J'ai également créé deux composables pour les previews : `ProfilPreview` et `ProfilAndroidPreview`.
+## 4. Utilisation de LazyColumn et LazyRow
 
-### 2. Quel composable représente l'écran principal ?
+La `LazyColumn` permet de faire défiler verticalement l'ensemble du profil et d'afficher les différents projets à l'aide du composable réutilisable `ProjetCard()`.
 
-Le composable `ProfilScreen` représente l'écran principal. Il regroupe les différentes sections du profil dans une `Column`.
+La `LazyRow` permet de faire défiler horizontalement les compétences, affichées à l'aide du composable réutilisable `CompetenceCard()`.
 
-### 3. Où utilisez-vous un padding externe ?
+## 5. Choix du thème
 
-J'utilise un padding externe dans `ProfilScreen` avec `Modifier.padding(20.dp)` pour laisser un espace entre le contenu et les bords de l'écran.
-J'utilise également `Arrangement.spacedBy(16.dp)` pour espacer les différentes sections.
+J'ai choisi d'utiliser Material Design 3 pour obtenir une interface moderne, simple et cohérente.
 
-### 4. Où utilisez-vous un padding interne ?
+Le bleu est utilisé comme couleur principale. Les couleurs sont adaptées aux thèmes clair et sombre pour assurer une bonne lisibilité.
 
-J'utilise un padding interne dans les `Column` placées à l'intérieur des `Surface`, par exemple `Modifier.padding(24.dp)` dans `ProfilHeader` et `Modifier.padding(20.dp)` dans les autres sections.
+La typographie permet de différencier les titres et les descriptions. Les coins arrondis donnent un aspect homogène aux différentes sections de l'application.
 
-Cela permet d'espacer le texte des bords des cartes.
+## 6. Capture d'écran
 
-### 5. Quel composant reçoit un callback ?
+Aperçu de l'application en thème clair et en thème sombre.
 
-Le composable `ContactSection` reçoit le callback `onContactClick` en paramètre.
-Ce callback est utilisé par le bouton « Me contacter » avec `onClick`. Lors du clic, l'application demande à Android d'ouvrir une application de messagerie.
+![Profil Développeur - Thèmes clair et sombre](captures/capture.png)
 
-### 6. Quelle information d'accessibilité avez-vous ajoutée ?
+## 7. Notions du chapitre Compose UI réutilisées
 
-J'ai ajouté une `contentDescription` au bouton « Me contacter » avec `Modifier.semantics`.
-La description est : « Envoyer un email à Zakia Kadi ».
-Elle permet aux outils d'accessibilité de comprendre l'action du bouton.
+**Quelles notions du chapitre Compose UI avez-vous réutilisées dans cette application ?**
 
-### 7. Pourquoi vos composants peuvent-ils être considérés comme réutilisables ?
+J'ai réutilisé les composants fondamentaux de Compose, les layouts, les modifiers, les composables réutilisables, les listes modernes, les paramètres, les callbacks et les previews.
 
-Mes composables sont réutilisables parce qu'ils reçoivent leurs informations sous forme de paramètres au lieu de contenir directement des valeurs fixes.
-Ils possèdent également un paramètre `modifier: Modifier = Modifier` pour personnaliser leur affichage.
-Par exemple, les deux previews utilisent le même composable `ProfilScreen` avec des informations différentes : mon profil et celui d'Alex Martin.
-Cela permet d'afficher plusieurs profils sans modifier la structure de l'interface.
+J'ai également appliqué les notions de Material Design 3 concernant les couleurs, la typographie, les formes et les thèmes clair et sombre.
 
-## Captures d'écran
+## 8. Fonctionnalités réalisées
 
-Les captures d'écran sont disponibles dans le dossier `captures/` :
+### Fonctionnalité 1 - Avatar et badge de disponibilité
 
-- `profil.png` : application sur l'émulateur.
-- `previews.png` : les deux previews Jetpack Compose.
+J'ai ajouté un avatar et un badge vert afin d'améliorer la présentation du profil.
+
+Pour cette fonctionnalité, je me suis appuyée sur les notions vues en TP pour l'utilisation des images et la superposition des éléments avec `Box`.
+
+### Fonctionnalité 2 - Liste des compétences
+
+J'ai amélioré l'affichage des compétences en utilisant une liste horizontale défilante et des cartes réutilisables.
+
+### Fonctionnalité 3 - Liste des projets et expériences
+
+J'ai ajouté une section présentant mes projets, les technologies utilisées et une courte description de chaque projet.
+
+Je me suis appuyée sur l'utilisation de `LazyColumn` et des cartes réutilisables.
+
+### Fonctionnalité 4 - Section contact
+
+J'ai amélioré la section contact en ajoutant un champ en lecture seule pour l'adresse e-mail ainsi qu'une icône accompagnant le bouton de contact.
+
+### Fonctionnalité 5 - Personnalisation des couleurs
+
+J'ai défini deux palettes de couleurs afin d'adapter l'interface aux thèmes clair et sombre.
+
+### Fonctionnalité 6 - Personnalisation de la typographie
+
+J'ai personnalisé les styles des textes afin d'améliorer la lisibilité et de différencier les titres des descriptions.
+
+### Fonctionnalité 7 - Personnalisation des formes
+
+J'ai personnalisé les coins arrondis des cartes et des différentes sections afin d'obtenir une interface homogène.
+
+### Fonctionnalité 8 - Previews claire et sombre
+
+J'ai créé deux previews permettant de visualiser le même profil en thème clair et en thème sombre.
