@@ -356,48 +356,51 @@ fun TitreSection(
     )
 }
 
-// Première preview : profil personnel
 @Preview(
     showBackground = true,
-    name = "Profil Zakia"
+    name = "Profil - Theme clair"
 )
 @Composable
-fun ProfilPreview() {
-    ProfilDéveloppeurTheme {
+fun ProfilLightPreview() {
+    ProfilDéveloppeurTheme(darkTheme = false) {
         ProfilScreen(
             nom = "Zakia Kadi",
             role = "Développeuse junior",
-            description = "Étudiante en informatique, passionnée par le développement logiciel et les systèmes d'information.",
+            description = "Étudiante en informatique, passionnée par le développement logiciel, les applications mobiles et les systèmes d'information.",
             competences = listOf(
                 "Java",
                 "Kotlin",
                 "Python",
                 "SQL",
-                "Git"
+                "HTML / CSS",
+                "Git / GitHub"
             ),
             email = "z.kadi@myskolae.fr",
             onContactClick = {}
         )
     }
 }
-// Deuxième preview : autre profil
+
 @Preview(
     showBackground = true,
-    name = "Profil Android"
+    name = "Profil - Theme sombre"
 )
 @Composable
-fun ProfilAndroidPreview() {
-    ProfilDéveloppeurTheme {
+fun ProfilDarkPreview() {
+    ProfilDéveloppeurTheme(darkTheme = true) {
         ProfilScreen(
-            nom = "Alex Martin",
-            role = "Développeur Android",
-            description = "Passionné par le développement d'applications Android modernes.",
+            nom = "Zakia Kadi",
+            role = "Développeuse junior",
+            description = "Étudiante en informatique, passionnée par le développement logiciel, les applications mobiles et les systèmes d'information.",
             competences = listOf(
+                "Java",
                 "Kotlin",
-                "Jetpack Compose",
-                "Git"
+                "Python",
+                "SQL",
+                "HTML / CSS",
+                "Git / GitHub"
             ),
-            email = "alex@gmail.com",
+            email = "z.kadi@myskolae.fr",
             onContactClick = {}
         )
     }
