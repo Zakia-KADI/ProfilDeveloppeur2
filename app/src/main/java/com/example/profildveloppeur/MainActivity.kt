@@ -32,11 +32,42 @@ import androidx.compose.ui.res.painterResource
 
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyColumn
 
 
 // Couleurs de l'application
 private val Bleu = Color(0xFF1D4ED8)
 private val Fond = Color(0xFFF1F5F9)
+
+data class ProjetUi(
+    val id: Int,
+    val titre: String,
+    val technologies: String,
+    val description: String
+)
+
+fun sampleProjets(): List<ProjetUi> {
+    return listOf(
+        ProjetUi(
+            id = 1,
+            titre = "Product Explorer",
+            technologies = "Kotlin, Jetpack Compose",
+            description = "Application Android de présentation d'un catalogue de produits."
+        ),
+        ProjetUi(
+            id = 2,
+            titre = "Profil Développeur",
+            technologies = "Kotlin, Jetpack Compose",
+            description = "Application mobile présentant un profil développeur et ses compétences."
+        ),
+        ProjetUi(
+            id = 3,
+            titre = "Développement Odoo",
+            technologies = "Python, PostgreSQL",
+            description = "Développement et maintenance de modules pour un ERP."
+        )
+    )
+}
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,38 +143,62 @@ fun ProfilScreen(
     competences: List<String>,
     email: String,
     onContactClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    projets: List<ProjetUi> = sampleProjets()
 ) {
     Surface(
         modifier = modifier.fillMaxSize(),
         color = Fond
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp),
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ProfilHeader(
-                nom = nom,
-                role = role
-            )
+            item {
+                ProfilHeader(
+                    nom = nom,
+                    role = role
+                )
+            }
 
-            DescriptionSection(
-                description = description
-            )
+            item {
+                DescriptionSection(
+                    description = description
+                )
+            }
 
-            CompetencesSection(
-                competences = competences
-            )
+            item {
+                CompetencesSection(
+                    competences = competences
+                )
+            }
 
-            ContactSection(
-                email = email,
-                onContactClick = onContactClick
-            )
+            item {
+                TitreSection(
+                    titre = "Projets et expériences"
+                )
+            }
+
+            items(
+                items = projets,
+                key = { projet -> projet.id }
+            ) { projet ->
+                ProjetCard(
+                    projet = projet
+                )
+            }
+
+            item {
+                ContactSection(
+                    email = email,
+                    onContactClick = onContactClick
+                )
+            }
         }
     }
 }
+
 
 // En-tête
 @Composable
@@ -329,7 +384,6 @@ fun ProfilPreview() {
         )
     }
 }
-
 // Deuxième preview : autre profil
 @Preview(
     showBackground = true,
@@ -352,8 +406,6 @@ fun ProfilAndroidPreview() {
         )
     }
 }
-
-
 @Composable
 fun CompetenceCard(
     competence: String,
@@ -374,5 +426,49 @@ fun CompetenceCard(
             ),
             color = Color.White
         )
+    }
+}
+@Composable
+fun ProjetCard(
+    projet: ProjetUi,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = projet.titre,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Bleu
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = projet.technologies,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.Gray
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = projet.description,
+                fontSize = 14.sp,
+                color = Color.Black
+            )
+        }
     }
 }
