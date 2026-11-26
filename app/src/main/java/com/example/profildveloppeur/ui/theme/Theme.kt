@@ -6,7 +6,9 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Shapes
+import androidx.compose.ui.unit.dp
 private val LightColorScheme = lightColorScheme(
     primary = Color(0xFF1D4ED8),
     onPrimary = Color.White,
@@ -27,6 +29,12 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = Color(0xFFF1F5F9)
 )
 
+private val ProfilShapes = Shapes(
+    small = RoundedCornerShape(8.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(24.dp),
+    extraLarge = RoundedCornerShape(32.dp)
+)
 @Composable
 fun ProfilDéveloppeurTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -41,6 +49,7 @@ fun ProfilDéveloppeurTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = ProfilShapes,
         content = content
     )
 }
